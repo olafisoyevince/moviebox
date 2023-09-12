@@ -8,6 +8,8 @@ const FetchMovies = createContext();
 // Create a provider component
 export function FetchMoviesProvider({ children }) {
   const [movies, setMovies] = useState([]);
+  const [searchString, setSearchString] = useState("");
+  const [searchedMovies, setSearchedMovies] = useState([]);
   const [selectedMovies, setSelectedMovies] = useState({});
 
   const handleFetchMovies = async () => {
@@ -17,17 +19,25 @@ export function FetchMoviesProvider({ children }) {
     setMovies(result);
   };
 
+  const handleChange = (event) => {
+    event.preventDefault();
+    setSearchString(event.target.value);
+  };
+
   const handleSearchMovies = async (searchString) => {
     const result = await fetchMovies(searchString);
 
-    setMovies(result);
+    setSearchedMovies(result);
   };
 
   const contextValue = {
     movies,
+    searchedMovies,
     selectedMovies,
+    searchString,
     handleFetchMovies,
     handleSearchMovies,
+    handleChange,
   };
 
   return (

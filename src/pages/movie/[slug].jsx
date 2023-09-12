@@ -55,8 +55,8 @@ const MovieDetails = () => {
             </div>
 
             <div className=" pt-10 lg:flex gap-5">
-              <div className=" w-full lg:w-[65%] flex flex-col gap-8">
-                <div className="  xl:flex gap-3 items-center text-[#404040]">
+              <div className=" w-full lg:w-[60%] flex flex-col gap-8">
+                <div className=" gap-3 items-center text-[#404040]">
                   <div className=" flex flex-col gap-1">
                     <div className=" flex">
                       <label

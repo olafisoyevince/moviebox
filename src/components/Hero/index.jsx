@@ -2,24 +2,24 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { DM_Sans } from "next/font/google";
 import { useFetchMovies } from "../../../context/fetchMovies";
+import { useRouter } from "next/router";
+import { BiSearch } from "react-icons/bi";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
 const IMAGE_PATH = "https://image.tmdb.org/t/p/original/";
 
 const Hero = () => {
-  const [searchString, setSearchString] = useState("");
+  const router = useRouter();
 
-  const { handleSearchMovies, selectedMovies } = useFetchMovies();
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setSearchString(event.target.value);
-  };
+  const { handleSearchMovies, selectedMovies, handleChange, searchString } =
+    useFetchMovies();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleSearchMovies(searchString);
+
+    router.push("/search");
   };
 
   const handleKeyDown = (event) => {
@@ -31,8 +31,6 @@ const Hero = () => {
       document.getElementById("myButton").click();
     }
   };
-
-  console.log(searchString);
 
   return (
     <div
@@ -52,16 +50,12 @@ const Hero = () => {
             type="text"
             className=" bg-transparent border border-gray-300  md:block md:w-[270px] lg:w-[400px] xl:w-[500px] outline-none pt-1 pb-1 pl-2 rounded-md placeholder:text-white"
             placeholder="What do you want to watch?"
-            onChange={handleSearch}
+            onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
 
           <button id="myButton" type="submit">
-            <img
-              src="/search.png"
-              alt=""
-              className=" absolute right-2 top-[10px] "
-            />
+            <BiSearch className=" absolute right-2 top-[10px] text-white" />
           </button>
         </form>
 
@@ -70,16 +64,12 @@ const Hero = () => {
             type="text"
             className=" bg-transparent border border-gray-300 w-40  outline-none pt-1 pb-1 pl-2 rounded-md placeholder:text-white"
             placeholder="Search"
-            onChange={handleSearch}
+            onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
 
           <button id="myButton" type="submit">
-            <img
-              src="/search.png"
-              alt=""
-              className=" absolute right-2 top-[10px] "
-            />
+            <BiSearch className=" absolute right-2 top-[10px] text-white" />
           </button>
         </form>
 
