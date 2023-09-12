@@ -1,111 +1,128 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import Sidebar from "@/components/Sidebar";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
 const MOVIE_URL = "https://api.themoviedb.org/3/";
 
+const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
+
 const MovieDetails = () => {
   const router = useRouter();
   const { slug } = router.query;
 
+  console.log(slug);
+
   const [movieDetails, setMovieDetails] = useState([]);
 
-  // const fetchMovies = async () => {
-  //   const data = await axios.get(`${MOVIE_URL}/movie/${slug}`, {
-  //     params: {
-  //       api_key: "efa513d74d3cc1b4ea99a9f021dc5d8e",
-  //     },
-  //   });
+  const fetchMovies = async () => {
+    try {
+      const data = await axios.get(`${MOVIE_URL}/movie/${slug}`, {
+        params: {
+          api_key: "efa513d74d3cc1b4ea99a9f021dc5d8e",
+        },
+      });
 
-  //   setMovieDetails(data);
-  // };
+      // console.log(result);
 
-  // useEffect(() => {
-  //   fetchMovies();
-  // }, [slug]);
+      setMovieDetails(data);
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+    }
+  };
 
-  // console.log(movieDetails);
+  useEffect(() => {
+    fetchMovies();
+  }, [slug]);
 
-  // {movieDetails && movieDetails.data?.title}
+  console.log(movieDetails, "moviedrtails");
 
   return (
     <div className={` flex ${poppins.className} `}>
-      <div className=" w-1/5">
-        <Sidebar />
-      </div>
-      <div className=" p-9 w-4/5 ">
-        <div className=" h-[500px] w-full">
-          <img
-            src="/Rectangle 29.png"
-            alt=""
-            className=" w-full h-full rounded-[40px] object-cover "
-          />
-        </div>
+      {movieDetails === null ? (
+        <p>Loading...</p>
+      ) : movieDetails.data ? (
+        <>
+          <div className=" p-3 md:p-6 xl:p-9 w-full ">
+            <div className=" h-[450px] w-full">
+              <img
+                src={`${IMAGE_PATH}${movieDetails.data?.backdrop_path}`}
+                alt=""
+                className=" w-full h-full rounded-[40px] object-cover "
+              />
+            </div>
 
-        <div className=" pt-10 flex">
-          <div className=" w-[65%] flex flex-col gap-5">
-            <div className="flex gap-3 items-center text-[#404040]">
-              <p className=" font-bold text-2xl">Top Gun: Maverick</p>
-              <span>•</span>
-              <p className=" font-bold text-2xl"> 2022</p>
-              <span>•</span>
-              <p className=" font-bold text-2xl">PG-13</p>
-              <span>•</span>
-              <p className=" font-bold text-2xl">2h 10m</p>
+            <div className=" pt-10 lg:flex gap-5">
+              <div className=" w-full lg:w-[65%] flex flex-col gap-8">
+                <div className="  xl:flex gap-3 items-center text-[#404040]">
+                  <div className=" flex flex-col gap-1">
+                    <div className=" flex">
+                      <label
+                        htmlFor="title"
+                        className="font-bold text-base lg:text-lg"
+                      >
+                        Title:&nbsp;
+                      </label>
 
-              <div className=" px-2 py-1 border border-[#F8E7EB] text-[#B91C1C] rounded-3xl">
-                Action
+                      <p
+                        data-testid="movie-title"
+                        className=" font-bold text-base lg:text-lg"
+                      >
+                        {movieDetails.data?.title}
+                      </p>
+                    </div>
+                    {/* <span>•</span> */}
+                    <div className=" flex">
+                      <label className="font-bold text-base lg:text-lg">
+                        Release Date:&nbsp;
+                      </label>
+                      <p
+                        data-testid="movie-release-date"
+                        className=" font-bold text-base lg:text-lg"
+                      >
+                        {movieDetails.data?.release_date}
+                      </p>
+                    </div>
+                    <div className=" flex">
+                      <label className="font-bold text-base lg:text-lg">
+                        Runtime: &nbsp;
+                      </label>
+                      <p
+                        data-testid="movie-runtime"
+                        className=" font-bold text-base lg:text-lg"
+                      >
+                        {movieDetails.data.runtime} min
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className=" flex pt-4 gap-2 xl:pt-0">
+                    {movieDetails.data?.genres.map((genre) => (
+                      <div
+                        key={genre.id}
+                        className=" px-2 py-1 border border-[#F8E7EB] text-[#B91C1C] rounded-3xl"
+                      >
+                        {genre.name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <p
+                  data-testid="movie-overview"
+                  className=" text-base lg:text-lg font-normal text-[#333333]"
+                >
+                  {movieDetails.data?.overview}
+                </p>
               </div>
-              <div className=" px-2 py-1 border border-[#F8E7EB] text-[#B91C1C] rounded-3xl">
-                Drama
-              </div>
-            </div>
-
-            <p className=" text-xl font-normal text-[#333333]">
-              After thirty years, Maverick is still pushing the envelope as a
-              top naval aviator, but must confront ghosts of his past when he
-              leads TOP GUN's elite graduates on a mission that demands the
-              ultimate sacrifice from those chosen to fly it.
-            </p>
-
-            <div className="text-xl font-normal flex items-center gap-3">
-              <p>Director : </p>
-              <p className=" text-[#BE123C]">Joseph Kosinski</p>
-            </div>
-            <div className="text-xl font-normal flex items-center gap-3">
-              <p>Writers : </p>
-              <p className=" text-[#BE123C]">Joseph Kosinski</p>
-            </div>
-            <div className="text-xl font-normal flex items-center gap-3">
-              <p>Stars : </p>
-              <p className=" text-[#BE123C]">Joseph Kosinski</p>
             </div>
           </div>
-          <div className=" w-[35%]">
-            <div className=" flex justify-end">
-              <img src="/Star.svg" alt="" />
-              <p>8.5 | 350k</p>
-            </div>
-
-            <div className=" flex">
-              <img src="/tickets.svg" alt="" />
-              <p>See Showtimes</p>
-            </div>
-            <div className=" flex">
-              <img src="/tickets.svg" alt="" />
-              <p>See Showtimes</p>
-            </div>
-
-            <div>
-              <img src="/" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <p>No details found</p>
+      )}
     </div>
   );
 };

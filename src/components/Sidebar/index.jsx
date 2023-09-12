@@ -5,22 +5,24 @@ const dm_sans = DM_Sans({ subsets: ["latin"] });
 const Sidebar = () => {
   return (
     <div
-      className={` border h-[100vh] rounded-tr-[45px] rounded-br-[45px]  ${dm_sans.className}`}
+      className={` border h-[auto] rounded-tr-[45px] rounded-br-[45px]  ${dm_sans.className}`}
     >
-      <div className=" flex items-center gap-6">
+      <div className=" flex items-center gap-6  justify-center py-8">
         <img src="/logo.png" alt="" />
-        <h3 className=" font-bold text-2xl hidden md:block">MovieBox</h3>
+        <h3 className=" font-bold text-base md:text-xl xl:text-2xl hidden md:block">
+          MovieBox
+        </h3>
       </div>
 
       <div className=" flex flex-col gap-5">
-        <div className=" flex items-center md:gap-1 lg:gap-5 h-20">
+        <div className=" flex items-center md:gap-1 lg:gap-2 xl:gap-3 h-20 pl-9">
           <div className=" min-w-[20%]">
             <img src="/home.svg" alt="" className=" mx-auto" />
           </div>
           <h3 className=" font-semibold text-lg hidden md:block">Home</h3>
         </div>
 
-        <div className=" flex items-center md:gap-1 lg:gap-5 h-20">
+        <div className=" flex items-center md:gap-1 lg:gap-2 xl:gap-3 h-20 pl-9 bg-[#BE123C1A] border-r-4 text-[#BE123C] border-r-[#BE123C]">
           <div className=" min-w-[20%]">
             <img src="/projector.svg" alt="" className=" mx-auto" />
           </div>
@@ -29,14 +31,14 @@ const Sidebar = () => {
           </h3>
         </div>
 
-        <div className=" flex items-center md:gap-1 lg:gap-5 h-20">
+        <div className=" flex items-center md:gap-1 lg:gap-2 xl:gap-3 h-20 pl-9">
           <div className=" min-w-[20%]">
             <img src="/tv.svg" alt="" className=" mx-auto" />
           </div>
           <h3 className=" font-semibold text-lg hidden md:block">TV Series</h3>
         </div>
 
-        <div className=" flex items-center md:gap-1 lg:gap-5 h-20">
+        <div className=" flex items-center md:gap-1 lg:gap-2 xl:gap-3 h-20 pl-9">
           <div className=" min-w-[20%]">
             <img src="/calender.svg" alt="" className=" mx-auto" />
           </div>
@@ -57,7 +59,7 @@ const Sidebar = () => {
           </button>
         </div>
 
-        <div className=" flex items-center md:gap-1 lg:gap-5 h-20">
+        <div className=" flex items-center md:gap-1 lg:gap-2 xl:gap-3 h-20 pl-9">
           <div className=" min-w-[20%]">
             <img src="/logout.png" alt="" className=" mx-auto" />
           </div>

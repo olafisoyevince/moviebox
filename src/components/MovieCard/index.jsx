@@ -3,30 +3,25 @@ import axios from "axios";
 
 const MovieCard = ({ movie }) => {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
-  // const GENRE_PATH = "https://api.themoviedb.org/3/genre";
 
-  // const fetchGenres = async () => {
-  //   const {
-  //     data: { results },
-  //   } = await axios.get(`${GENRE_PATH}/1`, {
-  //     params: {
-  //       api_key: "efa513d74d3cc1b4ea99a9f021dc5d8e",
-  //     },
-  //   });
-
-  //   // setMovies(results);
-  //   console.log(results);
-  // };
-
-  // useEffect(() => {
-  //   fetchGenres();
-  // }, []);
+  console.log(movie);
 
   return (
-    <div className=" flex flex-col gap-3">
-      <img src={`${IMAGE_PATH}/${movie.poster_path}`} alt="" />
-      <p className=" font-bold text-xs text-gray-400">USA, 2016 - Current</p>
-      <p className=" text-lg font-bold">{movie.title}</p>
+    <div data-testid="movie-card" className=" flex flex-col gap-3">
+      <img
+        data-testid="movie-poster"
+        src={`${IMAGE_PATH}/${movie.poster_path}`}
+        alt=""
+      />
+      <p data-testid="movie-title" className=" text-lg font-bold">
+        {movie.title}
+      </p>
+      <p
+        data-testid="movie-release-date"
+        className=" font-bold text-xs text-gray-400"
+      >
+        {movie.release_date}
+      </p>
       <div className=" flex items-center gap-7">
         <div className=" flex items-center gap-1 md:gap-2">
           <img src="/imdb_logo.png" alt="" />
