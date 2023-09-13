@@ -25,9 +25,13 @@ export function FetchMoviesProvider({ children }) {
   };
 
   const handleSearchMovies = async (searchString) => {
-    const result = await fetchMovies(searchString);
+    try {
+      const result = await fetchMovies(searchString);
 
-    setSearchedMovies(result);
+      setSearchedMovies(result);
+    } catch (error) {
+      console.log("you will soon find what you are looking for, error");
+    }
   };
 
   const contextValue = {

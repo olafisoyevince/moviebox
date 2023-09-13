@@ -4,8 +4,6 @@ import axios from "axios";
 const MovieCard = ({ movie }) => {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
 
-  console.log(movie);
-
   return (
     <div data-testid="movie-card" className=" flex flex-col gap-3">
       <img

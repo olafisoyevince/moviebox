@@ -39,9 +39,7 @@ const MovieList = ({ movies, title }) => {
               <MovieCard movie={movie} />
             </Link>
           ))
-        ) : (
-          <p>No movies found.</p>
-        )}
+        ) : null}
       </div>
     </div>
   );

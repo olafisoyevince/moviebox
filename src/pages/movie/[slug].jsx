@@ -15,7 +15,7 @@ const MovieDetails = () => {
 
   console.log(slug);
 
-  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDetails, setMovieDetails] = useState(null);
 
   const fetchMovies = async () => {
     try {
@@ -24,9 +24,7 @@ const MovieDetails = () => {
           api_key: "efa513d74d3cc1b4ea99a9f021dc5d8e",
         },
       });
-
       // console.log(result);
-
       setMovieDetails(data);
     } catch (error) {
       console.error("Error fetching movie details:", error);
@@ -42,7 +40,9 @@ const MovieDetails = () => {
   return (
     <div className={` flex ${poppins.className} `}>
       {movieDetails === null ? (
-        <p>Loading...</p>
+        <div className=" h-[100vh] w-full flex items-center justify-center">
+          <span class="loader"></span>
+        </div>
       ) : movieDetails.data ? (
         <>
           <div className=" p-3 md:p-6 xl:p-9 w-full ">

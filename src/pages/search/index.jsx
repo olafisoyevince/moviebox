@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import MovieList from "@/components/MovieList";
 import { useFetchMovies } from "../../../context/fetchMovies";
 import { DM_Sans } from "next/font/google";
