@@ -67,7 +67,11 @@ const Search = () => {
           <img src="/menu.png" alt="" />
         </div>
       </div>
-      <MovieList movies={searchedMovies} title={"Search Results for "} />
+      <MovieList
+        movies={searchedMovies}
+        title={"Search Results for "}
+        textColor={"text-rose-700"}
+      />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { useFetchMovies } from "../../../context/fetchMovies";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
-const MovieList = ({ movies, title }) => {
+const MovieList = ({ movies, title, textColor }) => {
   const { searchString } = useFetchMovies();
   return (
     <div
@@ -17,18 +17,18 @@ const MovieList = ({ movies, title }) => {
           <h1 className=" font-bold text-4xl ">{title}</h1>
 
           {searchString && (
-            <p className=" font-bold text-4xl text-rose-700">
+            <p className={` font-bold text-4xl ${textColor}`}>
               &nbsp;{searchString}
             </p>
           )}
         </div>
 
-        <div className=" flex items-center gap-3">
+        {/* <div className=" flex items-center gap-3">
           <p className=" text-rose-700">See More </p>
           <i>
             <img src="/arrow-right.png" alt="" />
           </i>
-        </div>
+        </div> */}
       </div>
       <div className=" grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-16">
         {movies === null ? (
@@ -39,7 +39,13 @@ const MovieList = ({ movies, title }) => {
               <MovieCard movie={movie} />
             </Link>
           ))
-        ) : null}
+        ) : (
+          <>
+            <span className="">
+              No movies matched <span>{searchString}</span>
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

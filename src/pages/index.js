@@ -20,7 +20,11 @@ export default function Home() {
     <main className={` ${dm_sans.className}`}>
       <Hero />
 
-      <MovieList movies={movies} title={"Featured Movies"} />
+      <MovieList
+        movies={movies}
+        title={"Featured Movies"}
+        textColor={"text-white"}
+      />
 
       <Footer />
     </main>

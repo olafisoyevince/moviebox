@@ -46,7 +46,7 @@ const MovieDetails = () => {
       ) : movieDetails.data ? (
         <>
           <div className=" p-3 md:p-6 xl:p-9 w-full ">
-            <div className=" h-[450px] w-full">
+            <div className=" h-[550px] w-full">
               <img
                 src={`${IMAGE_PATH}${movieDetails.data?.backdrop_path}`}
                 alt=""
@@ -56,7 +56,7 @@ const MovieDetails = () => {
 
             <div className=" pt-10 lg:flex gap-5">
               <div className=" w-full lg:w-[60%] flex flex-col gap-8">
-                <div className=" gap-3 items-center text-[#404040]">
+                <div className=" text-[#404040]">
                   <div className=" flex flex-col gap-1">
                     <div className=" flex">
                       <label
@@ -73,7 +73,7 @@ const MovieDetails = () => {
                         {movieDetails.data?.title}
                       </p>
                     </div>
-                    {/* <span>•</span> */}
+
                     <div className=" flex">
                       <label className="font-bold text-base lg:text-lg">
                         Release Date:&nbsp;
@@ -85,6 +85,7 @@ const MovieDetails = () => {
                         {movieDetails.data?.release_date}
                       </p>
                     </div>
+
                     <div className=" flex">
                       <label className="font-bold text-base lg:text-lg">
                         Runtime: &nbsp;
@@ -98,7 +99,7 @@ const MovieDetails = () => {
                     </div>
                   </div>
 
-                  <div className=" flex pt-4 gap-2 xl:pt-0">
+                  <div className=" mt-2 flex pt-4 gap-2 xl:pt-0">
                     {movieDetails.data?.genres.map((genre) => (
                       <div
                         key={genre.id}
