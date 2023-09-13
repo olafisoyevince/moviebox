@@ -25,7 +25,7 @@ const Search = () => {
   };
 
   return (
-    <>
+    <div className=" pt-3 pb-10">
       <div
         className={`z-10 flex justify-between items-center px-[10px] md:px-[30px] lg:px-[50px] xl:px-[100px] ${dm_sans.className}`}
       >
@@ -69,10 +69,10 @@ const Search = () => {
       </div>
       <MovieList
         movies={searchedMovies}
-        title={"Search Results for "}
+        title={"Search Results"}
         textColor={"text-rose-700"}
       />
-    </>
+    </div>
   );
 };
 

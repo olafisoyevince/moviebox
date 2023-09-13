@@ -4,6 +4,7 @@ import { DM_Sans } from "next/font/google";
 import { useFetchMovies } from "../../../context/fetchMovies";
 import { useRouter } from "next/router";
 import { BiSearch } from "react-icons/bi";
+import Link from "next/link";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
@@ -40,10 +41,10 @@ const Hero = () => {
       }}
     >
       <div className=" z-10 flex justify-between items-center">
-        <div className=" flex items-center gap-6">
+        <Link href="/" className=" flex items-center gap-6">
           <img src="/logo.png" alt="" />
           <h3 className=" font-bold text-2xl hidden md:block">MovieBox</h3>
-        </div>
+        </Link>
 
         <form onSubmit={handleSubmit} className="relative hidden md:block mt-6">
           <input

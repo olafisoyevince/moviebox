@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const MovieCard = ({ movie }) => {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
 
   return (
-    <div data-testid="movie-card" className=" flex flex-col gap-3">
+    <div data-testid="movie-card" className={`flex flex-col gap-3 relative`}>
       <img
         data-testid="movie-poster"
         src={`${IMAGE_PATH}/${movie.poster_path}`}

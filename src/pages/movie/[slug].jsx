@@ -13,7 +13,7 @@ const MovieDetails = () => {
   const router = useRouter();
   const { slug } = router.query;
 
-  console.log(slug);
+  // console.log(slug);
 
   const [movieDetails, setMovieDetails] = useState(null);
 
@@ -35,7 +35,7 @@ const MovieDetails = () => {
     fetchMovies();
   }, [slug]);
 
-  console.log(movieDetails, "moviedrtails");
+  // console.log(movieDetails, "moviedrtails");
 
   return (
     <div className={` flex ${poppins.className} `}>
@@ -94,7 +94,7 @@ const MovieDetails = () => {
                         data-testid="movie-runtime"
                         className=" font-bold text-base lg:text-lg"
                       >
-                        {movieDetails.data.runtime} min
+                        {movieDetails.data.runtime} minutes
                       </p>
                     </div>
                   </div>
