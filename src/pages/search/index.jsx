@@ -1,5 +1,5 @@
 import MovieList from "@/components/MovieList";
-import { useFetchMovies } from "../../../context/fetchMovies";
+import { useFetchMovies } from "../../context/fetchMovies";
 import { DM_Sans } from "next/font/google";
 import { BiSearch } from "react-icons/bi";
 

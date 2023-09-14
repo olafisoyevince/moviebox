@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { DM_Sans } from "next/font/google";
-import { useFetchMovies } from "../../../context/fetchMovies";
+import { useFetchMovies } from "../../context/fetchMovies";
 import { useRouter } from "next/router";
 import { BiSearch } from "react-icons/bi";
 import Link from "next/link";

@@ -3,7 +3,7 @@ import { DM_Sans } from "next/font/google";
 import Hero from "@/components/Hero";
 import MovieList from "@/components/MovieList";
 import Footer from "@/components/Footer";
-import { useFetchMovies } from "../../context/fetchMovies";
+import { useFetchMovies } from "../context/fetchMovies";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 

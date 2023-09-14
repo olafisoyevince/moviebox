@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { FetchMoviesProvider } from "../../context/fetchMovies";
+import { FetchMoviesProvider } from "../context/fetchMovies";
 
 export default function App({ Component, pageProps }) {
   return (
