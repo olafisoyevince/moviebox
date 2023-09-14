@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
 const MovieCard = ({ movie }) => {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
+
+  // const date = new toUTCString(movie.release_date);
+
+  const existingDate = movie.release_date; // Replace with your existing date string
+  const dateObject = new Date(existingDate);
+  const date = dateObject.toUTCString();
 
   return (
     <div data-testid="movie-card" className={`flex flex-col gap-3 relative`}>
@@ -18,7 +21,7 @@ const MovieCard = ({ movie }) => {
         data-testid="movie-release-date"
         className=" font-bold text-xs text-gray-400"
       >
-        {movie.release_date}
+        {date}
       </p>
       <div className=" flex items-center gap-7">
         <div className=" flex items-center gap-1 md:gap-2">

@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import MovieCard from "../MovieCard";
 import Link from "next/link";
 import { DM_Sans } from "next/font/google";
-import { useFetchMovies } from "../../../context/fetchMovies";
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
-const MovieList = ({ movies, title, textColor }) => {
-  const [like, setLike] = useState(false);
-  // const { searchString } = useFetchMovies();
-
+const MovieList = ({ movies, title }) => {
   const [likeStates, setLikeStates] = useState(
     Array(movies.length).fill(false)
   );

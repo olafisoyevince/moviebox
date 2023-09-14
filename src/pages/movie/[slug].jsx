@@ -31,6 +31,14 @@ const MovieDetails = () => {
     }
   };
 
+  let date;
+
+  if (movieDetails?.data) {
+    const existingDate = movieDetails.data?.release_date; // Replace with your existing date string
+    const dateObject = new Date(existingDate);
+    date = dateObject.toUTCString();
+  }
+
   useEffect(() => {
     fetchMovies();
   }, [slug]);
@@ -82,7 +90,7 @@ const MovieDetails = () => {
                         data-testid="movie-release-date"
                         className=" font-bold text-base lg:text-lg"
                       >
-                        {movieDetails.data?.release_date}
+                        {date}
                       </p>
                     </div>
 
